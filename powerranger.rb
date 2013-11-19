@@ -1,7 +1,7 @@
 class Person
 
 	attr_reader :name
-	attr_reader :caffeine_level
+	attr_accessor :caffeine_level
 
 	def initialize(name)
 		@name = name
@@ -43,7 +43,7 @@ class PowerRanger < Person
 		victim.scream
 		victim.run
 		
-		if @strength > 5
+		if power > 5
 			victim.scream
 			victim.run
 		end
@@ -63,7 +63,32 @@ class PowerRanger < Person
 
 end
 
-class EvilNinja
+class EvilNinja < Person
+
+	def initialize(name, strength, evilness)
+		super(name)
+		@strength = strength
+		@evilness = evilness
+	end
+
+	def punch(victim)
+		victim.scream
+		victim.run
+		
+		if @strength > 5
+			victim.scream
+			victim.run
+		end
+		
+		@caffeine_level -= 1
+
+	end
+
+	def cause_mayhem(victim)
+		victim.caffeine_level = 0
+	end
+
+
 end
 
 
